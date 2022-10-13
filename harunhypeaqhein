@@ -1,0 +1,12 @@
+!git clone https://github.com/camenduru/stable-diffusion-webui
+%cd stable-diffusion-webui
+
+!sed -i -e 's/numpy==1.23.3/numpy==1.21.6/g' requirements_versions.txt
+!sed -i -e 's/fairscale==0.4.9/fairscale==0.4.6/g' requirements_versions.txt
+
+
+!wget https://huggingface.co/Eonlaxy/nvoai/resolve/main/nai.ckpt -O /content/stable-diffusion-webui/models/Stable-diffusion/nai.ckpt
+!wget https://huggingface.co/Eonlaxy/nvoai/resolve/main/nai.vae.pt -O /content/stable-diffusion-webui/models/Stable-diffusion/nai.vae.pt
+!wget https://huggingface.co/Eonlaxy/nvoai/resolve/main/nai.yaml -O /content/stable-diffusion-webui/models/Stable-diffusion/nai.yaml
+
+!python launch.py --share --opt-split-attention
